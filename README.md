@@ -47,8 +47,5 @@ Acesse o site localmente em `http://127.0.0.1:8000/`.
 ## Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
 
-## Licença
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
-
 ---
 Desenvolvido com ❤️ por Andressa Lopes.
