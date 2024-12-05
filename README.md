@@ -11,7 +11,7 @@ Pypel é uma plataforma inovadora desenvolvida para facilitar a gestão de papel
 
 ## Tecnologias Utilizadas
 - **Backend**: Django (Python)
-- **Banco de Dados**: SQLite (ou PostgreSQL)
+- **Banco de Dados**: PostgreSQL (ou SQLite)
 - **Frontend**: HTML, CSS, JavaScript
 
 ## Como Executar o Projeto
