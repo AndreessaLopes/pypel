@@ -41,9 +41,9 @@ class Command(BaseCommand):
         #Cria um usuario administrador principal do sistema
         
         User = get_user_model()
-        if not User.objects.filter(email='teste@teste.com').exists():
+        if not User.objects.filter(email='andressacaroline082011@gmail.com').exists():
             usuario = User(
-                email = 'teste@teste.com',
+                email = 'andressacaroline082011@gmail.com',
                 nome = 'Administrador',
                 is_admin = True,
                 departamento = departamento,
