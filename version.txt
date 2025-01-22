@@ -1,0 +1,29 @@
+PYPEL - SISTEMA DE GERENCIAMENTO DE PAPELARIA
+VERSÃO 0.01 - Sistema de autenticação concluído - 22/01/2025
+
+https://github.com/AndreessaLopes/pypel
+Andressa Caroline Lopes de Assis
+andressacaroline082011@gmail.com
+
+1. ABNT
+ASSIS, Andressa C. L. PYPEL - Sistema de Gerenciamento de Papelaria.
+[S.l.]: [s.n.], 2025. Disponível em: https://github.com/AndreessaLopes/pypel
+Acesso em: [data de acesso].
+
+2. IEEE
+A. C. L. ASSIS, "PYPEL - Sistema de Gerenciamento de Papelaria" [online]. 
+Disponível em: https://github.com/AndreessaLopes/pypel
+[Acesso em: dia,mes,ano]
+
+3. APA
+Assis, A. C. L. (2025). PYPEL - Sistema de Gerenciamento de Papelaria. 
+Acesso em: [data de acesso], de https://github.com/AndreessaLopes/pypel
+
+4. BibTeX
+@misc{andressalopes2025pypel,
+    author = {Assis, Andressa Caroline Lopes},
+    title = {PYPEL - Sistema de Gerenciamento de Papelaria},
+    year = {2025},
+    howpublished = {\url{https://github.com/AndreessaLopes/pypel}},
+    note = {Acessado em: data de acesso}
+}
