@@ -4,7 +4,7 @@ from django.db.models.deletion import ProtectedError
 
 class Departamento(models.Model):
     nome = models.CharField(max_length=500)
-    sigla = models.CharField(max_length=30)
+    sigla = models.CharField(max_length=10, null=False, blank=False)
     
     def delete(self, *args, **kwargs):
         if self.usuario_set.exists():
@@ -45,7 +45,6 @@ class UsuarioManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
-
 
 class Usuario(AbstractBaseUser):
     nome = models.CharField(max_length=300)

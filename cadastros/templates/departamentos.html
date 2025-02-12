@@ -1,54 +1,143 @@
-{% extends 'master.html' %} {% load static %} {% block conteudo %}
+{% extends 'master.html' %}
+{% load static %}
+
+{% block conteudo %}
 <br />
 
 <div class="container">
   <div class="form-group row align-items-center mb-4">
     <div class="col-12 text-center">
-      <h1 class="display-5 font-wheigt-bold text-primary">
-        Cadastro de Departamentos
+      <h1 class="display-5 font-weight-bold text-primary">
+        Cadastro de Departamento
       </h1>
       <hr class="mt-2 mb-3 border-primary" />
     </div>
   </div>
+
   <fieldset class="fieldset-custom">
     <legend>
-      {% if page_obj.paginator.count == 0 %} 
-      Nenhum registro encontrado {% elif page_obj.paginator.count == 1 %} 
-      1 registro encontrado 
-      {% else %} 
-      {{page_obj.paginator.count }} registros encontrados {% endif %}
+      {% if page_obj.paginator.count == 0 %} Nenhum departamento cadastrado {%
+      elif page_obj.paginator.count == 1 %} 1 departamento cadastrado {% else %}
+      {{ page_obj.paginator.count }} departamentos cadastrados {% endif %}
     </legend>
+
     <div class="form-group row align-items-center">
       <div class="col-auto">
         <img
           src="{% static 'img/search.png' %}"
+          alt="Pesquisar"
           width="20px"
           height="20px"
-          alt="Pesquisar"
-          class="img-fluid"
         />
       </div>
+
       <div class="text-left">
         <label for="txtBuscaNome" class="col-form-label"
-          >Pesquisar por nome:</label
+          >Pesquisar por Nome:</label
         >
       </div>
+
       <div class="col">
         <input
           type="text"
-          id="txtBuscaNome"
           class="form-control"
+          id="txtBuscaNome"
+          name="txtBuscaNome"
           placeholder="Digite o nome do departamento"
-          value="{{query}}"
+          value="{{ query}}"
         />
       </div>
     </div>
-    <div id="departamentos-table">
-        {% include 'departamentos_table.html' %}
-    </div>
+
+    <div id="departamentos-table">{% include 'departamentos_table.html' %}</div>
   </fieldset>
-  <hr>
+
+  <hr />
+
+  <fieldset class="fieldset-custom">
+    <legend id="formLegend">Novo Departamento</legend>
+
+    <form
+      class="needs-validation"
+      method="POST"
+      action="{% url 'cadastros:departamentos' %}"
+      novalidate
+    >
+      {% csrf_token %}
+      <input type="hidden" id="txtId" name="txtId" value="" />
+      <div class="form-group row align-items-center has-validation">
+        <label for="txtNome" class="col-sm-2 col-form-label text-left"
+          >Nome:</label
+        >
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            id="txtNome"
+            placeholder="Digite o nome"
+            name="txtNome"
+            value=""
+            required
+          />
+          <div class="invalid-feedback text-left">O nome é obrigatório.</div>
+        </div>
+      </div>
+      <div class="form-group row align-items-center has-validation">
+        <label for="txtSigla" class="col-sm-2 col-form-label text-left"
+          >Sigla:</label
+        >
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            id="txtSigla"
+            placeholder="Digite a sigla"
+            name="txtSigla"
+            value=""
+            maxlength="5"
+            required
+          />
+          <div class="invalid-feedback text-left">
+            A sigla é obrigatória e deve ter no máximo 5 caracteres.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <div class="col-sm-12 text-right">
+          <a
+            href="{% url 'cadastros:departamentos' %}"
+            class="btn btn-info"
+            id="btnNovoDepartamento"
+            style="display: none"
+          >
+            <img
+              src="{% static 'img/create.png' %}"
+              alt="Voltar ao modo de inclusão"
+              width="20px"
+              height="20px"
+            />
+            Voltar ao modo de inclusão
+          </a>
+
+          <button
+            type="submit"
+            name="btnAcao"
+            id="btnAcao"
+            value="novo_departamento"
+            class="btn btn-primary"
+          >
+            Salvar Novo Departamento
+          </button>
+          <button type="reset" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
 </div>
+
+<script>
+  var obterDepartamentoUrl = "{% url 'cadastros:obter_departamento_por_id' %}";
+</script>
+
+<script src="{% static 'js/departamentos.js' %}"></script>
 {% endblock %}
-
-
