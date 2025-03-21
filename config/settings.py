@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "cadastros",
     "core",
     "sistema",
+    "relatorios",
 ]
 
 MIDDLEWARE = [

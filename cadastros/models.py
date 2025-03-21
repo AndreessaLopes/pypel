@@ -4,7 +4,7 @@ from django.db.models.deletion import ProtectedError
 
 class Departamento(models.Model):
     nome = models.CharField(max_length=500)
-    sigla = models.CharField(max_length=10, null=False, blank=False)
+    sigla = models.CharField(max_length=30)
     
     def delete(self, *args, **kwargs):
         if self.usuario_set.exists():
@@ -28,6 +28,26 @@ class Perfil(models.Model):
             )
         super().delete(*args, **kwargs)
         
+    def __str__(self):
+        return self.nome
+    
+class Categoria(models.Model):
+    nome = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.nome
+
+class Fornecedor(models.Model):
+    nome = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return self.nome
+    
+class Produto(models.Model):
+    nome = models.CharField(max_length=500)
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
+    fornecedor = models.ManyToManyField(Fornecedor)
+    
     def __str__(self):
         return self.nome
     
@@ -74,3 +94,10 @@ class Usuario(AbstractBaseUser):
 
     def tem_perfil(self, perfil_nome):
         return self.perfis.filter(nome=perfil_nome).exists()
+    
+class Atividade(models.Model):
+    nome = models.CharField(max_length=500)
+    responsaveis = models.ManyToManyField('Usuario', related_name='responsaveis')
+        
+    def __str__(self):
+        return self.nome
